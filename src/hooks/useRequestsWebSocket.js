@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react'
 
-const WS_URL = 'ws://127.0.0.1:8000/ws/notifications/'
+const WS_BASE = (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000').replace('http', 'ws')
+const WS_URL = `${WS_BASE}/ws/notifications/`
 
 export const useRequestsWebSocket = (onMessage) => {
   const ws = useRef(null)
@@ -33,11 +34,10 @@ export const useRequestsWebSocket = (onMessage) => {
   }, [])
 
   useEffect(() => {
-    // TEMPORARILY DISABLED
-    // connect()
-    // return () => {
-    //   clearTimeout(reconnectTimer.current)
-    //   ws.current?.close()
-    // }
+    connect()
+    return () => {
+      clearTimeout(reconnectTimer.current)
+      ws.current?.close()
+    }
   }, [connect])
 }

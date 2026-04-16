@@ -142,6 +142,7 @@
 
 
 
+import logoImg from '../assets/Teople1.png';
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { loginUser } from "../api";
@@ -252,7 +253,7 @@ const Login = () => {
         {/* Logo + Title */}
         <div className="flex flex-col items-center mb-4">
           <img
-            src="/src/assets/Teople1.png"
+            src={logoImg}
             alt="Company Logo"
             className="w-12 h-12 rounded-full object-cover mb-2"
           />

@@ -12,7 +12,8 @@ export const useWebSocket = () => {
       const token = localStorage.getItem('accessToken')
       if (!token) return
 
-      const wsUrl = `ws://localhost:8000/ws/notifications/?token=${token}`
+      const wsBase = (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000').replace('http', 'ws')
+      const wsUrl = `${wsBase}/ws/notifications/?token=${token}`
       socketRef.current = new WebSocket(wsUrl)
 
       socketRef.current.onopen = () => {
@@ -87,9 +88,8 @@ export const useWebSocket = () => {
   }
 
   useEffect(() => {
-    // TEMPORARILY DISABLED
-    // connect()
-    // return () => disconnect()
+    connect()
+    return () => disconnect()
   }, [])
 
   return {

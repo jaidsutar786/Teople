@@ -100,8 +100,22 @@ const MultiStepEmployeeForm = () => {
     return false;
   };
 
-  const handlePreSubmit = () => {
-    setShowConfirmModal(true);
+  const handleNext = async () => {
+    try {
+      await form.validateFields();
+      setCurrentStep(currentStep + 1);
+    } catch {
+      message.error('Please fill all required fields');
+    }
+  };
+
+  const handlePreSubmit = async () => {
+    try {
+      await form.validateFields();
+      setShowConfirmModal(true);
+    } catch {
+      message.error('Please fill all required fields');
+    }
   };
 
   const handleConfirmSubmit = async () => {
@@ -197,7 +211,7 @@ const MultiStepEmployeeForm = () => {
             <>
               <Row gutter={16}>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="firstName" label="First Name">
+                  <Form.Item name="firstName" label="First Name" rules={[{ required: true, message: 'First name is required' }]}>
                     <Input placeholder="Enter first name" />
                   </Form.Item>
                 </Col>
@@ -207,17 +221,17 @@ const MultiStepEmployeeForm = () => {
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="lastName" label="Last Name">
+                  <Form.Item name="lastName" label="Last Name" rules={[{ required: true, message: 'Last name is required' }]}>
                     <Input placeholder="Enter last name" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="dateOfBirth" label="Date of Birth">
+                  <Form.Item name="dateOfBirth" label="Date of Birth" rules={[{ required: true, message: 'Date of birth is required' }]}>
                     <Input type="date" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="gender" label="Gender">
+                  <Form.Item name="gender" label="Gender" rules={[{ required: true, message: 'Gender is required' }]}>
                     <Select placeholder="Select gender">
                       <Option value="male">Male</Option>
                       <Option value="female">Female</Option>
@@ -226,7 +240,7 @@ const MultiStepEmployeeForm = () => {
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="maritalStatus" label="Marital Status">
+                  <Form.Item name="maritalStatus" label="Marital Status" rules={[{ required: true, message: 'Marital status is required' }]}>
                     <Select placeholder="Select status">
                       <Option value="single">Single</Option>
                       <Option value="married">Married</Option>
@@ -235,52 +249,42 @@ const MultiStepEmployeeForm = () => {
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="nationality" label="Nationality">
+                  <Form.Item name="nationality" label="Nationality" rules={[{ required: true, message: 'Nationality is required' }]}>
                     <Input placeholder="e.g., Indian" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="parentName" label="Father's/Mother's Name">
+                  <Form.Item name="parentName" label="Father's/Mother's Name" rules={[{ required: true, message: 'Parent name is required' }]}>
                     <Input placeholder="Enter parent name" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="contactNumber" label="Contact Number">
+                  <Form.Item name="contactNumber" label="Contact Number" rules={[{ required: true, message: 'Contact number is required' }, { pattern: /^[0-9]{10}$/, message: 'Enter valid 10 digit number' }]}>
                     <Input placeholder="+91 XXXXXXXXXX" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="alternateNumber" label="Alternate Number">
+                  <Form.Item name="alternateNumber" label="Alternate Number" rules={[{ pattern: /^[0-9]{10}$/, message: 'Enter valid 10 digit number' }]}>
                     <Input placeholder="+91 XXXXXXXXXX" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={24}>
-                  <Form.Item name="personalEmail" label="Personal Email">
+                  <Form.Item name="personalEmail" label="Personal Email" rules={[{ required: true, message: 'Personal email is required' }, { type: 'email', message: 'Enter valid email' }]}>
                     <Input placeholder="your.email@example.com" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={24}>
-                  <Form.Item name="permanentAddress" label="Permanent Address">
+                  <Form.Item name="permanentAddress" label="Permanent Address" rules={[{ required: true, message: 'Permanent address is required' }]}>
                     <TextArea rows={3} placeholder="Enter your permanent address" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={24}>
-                  <Form.Item name="currentAddress" label="Current Address">
+                  <Form.Item name="currentAddress" label="Current Address" rules={[{ required: true, message: 'Current address is required' }]}>
                     <TextArea rows={3} placeholder="Enter your current address" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="emergencyContactName" label="Emergency Contact Name">
-                    <Input placeholder="Enter emergency contact name" />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="emergencyContactNumber" label="Emergency Contact Number">
-                    <Input placeholder="+91 XXXXXXXXXX" />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="bloodGroup" label="Blood Group">
+                  <Form.Item name="bloodGroup" label="Blood Group" rules={[{ required: true, message: 'Blood group is required' }]}>
                     <Select placeholder="Select blood group">
                       <Option value="A+">A+</Option>
                       <Option value="A-">A-</Option>
@@ -302,12 +306,12 @@ const MultiStepEmployeeForm = () => {
             <>
               <Row gutter={16}>
                 <Col xs={24} sm={24} md={8}>
-                  <Form.Item name="aadharNumber" label="Aadhar Number">
+                  <Form.Item name="aadharNumber" label="Aadhar Number" rules={[{ required: true, message: 'Aadhar number is required' }, { pattern: /^[0-9]{12}$/, message: 'Enter valid 12 digit Aadhar number' }]}>
                     <Input placeholder="Enter Aadhar number" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={24} md={8}>
-                  <Form.Item label="Aadhar Document">
+                  <Form.Item label="Aadhar Document" rules={[{ required: true, message: 'Aadhar document is required' }]}>
                     <Upload beforeUpload={(file) => handleFileChange(file, 'aadhar_pdf')} showUploadList={false} accept=".pdf">
                       <Button icon={<UploadOutlined />}>{fileList.aadhar_pdf ? fileList.aadhar_pdf.name : 'Upload PDF'}</Button>
                     </Upload>
@@ -315,12 +319,12 @@ const MultiStepEmployeeForm = () => {
                 </Col>
                 
                 <Col xs={24} sm={24} md={8}>
-                  <Form.Item name="panNumber" label="PAN Number">
+                  <Form.Item name="panNumber" label="PAN Number" rules={[{ required: true, message: 'PAN number is required' }, { pattern: /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/, message: 'Enter valid PAN (e.g. ABCDE1234F)' }]}>
                     <Input placeholder="Enter PAN number" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={24} md={8}>
-                  <Form.Item label="PAN Document">
+                  <Form.Item label="PAN Document" rules={[{ required: true, message: 'PAN document is required' }]}>
                     <Upload beforeUpload={(file) => handleFileChange(file, 'pan_pdf')} showUploadList={false} accept=".pdf">
                       <Button icon={<UploadOutlined />}>{fileList.pan_pdf ? fileList.pan_pdf.name : 'Upload PDF'}</Button>
                     </Upload>
@@ -348,12 +352,12 @@ const MultiStepEmployeeForm = () => {
             <>
               <Row gutter={16}>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="tenthMarks" label="10th Marks">
+                  <Form.Item name="tenthMarks" label="10th Marks" rules={[{ required: true, message: '10th marks is required' }]}>
                     <Input placeholder="Enter marks/CGPA" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="tenthYear" label="10th Year">
+                  <Form.Item name="tenthYear" label="10th Year" rules={[{ required: true, message: '10th year is required' }]}>
                     <Input placeholder="Enter passing year" />
                   </Form.Item>
                 </Col>
@@ -366,12 +370,12 @@ const MultiStepEmployeeForm = () => {
                 </Col>
                 
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="twelfthMarks" label="12th Marks">
+                  <Form.Item name="twelfthMarks" label="12th Marks" rules={[{ required: true, message: '12th marks is required' }]}>
                     <Input placeholder="Enter marks/CGPA" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="twelfthYear" label="12th Year">
+                  <Form.Item name="twelfthYear" label="12th Year" rules={[{ required: true, message: '12th year is required' }]}>
                     <Input placeholder="Enter passing year" />
                   </Form.Item>
                 </Col>
@@ -384,22 +388,22 @@ const MultiStepEmployeeForm = () => {
                 </Col>
                 
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="highestQualification" label="Highest Qualification">
+                  <Form.Item name="highestQualification" label="Highest Qualification" rules={[{ required: true, message: 'Highest qualification is required' }]}>
                     <Input placeholder="e.g., B.Tech, MBA" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="highestQualificationMarks" label="Marks/CGPA">
+                  <Form.Item name="highestQualificationMarks" label="Marks/CGPA" rules={[{ required: true, message: 'Marks/CGPA is required' }]}>
                     <Input placeholder="Enter marks/CGPA" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="highestQualificationYear" label="Year of Passing">
+                  <Form.Item name="highestQualificationYear" label="Year of Passing" rules={[{ required: true, message: 'Year of passing is required' }]}>
                     <Input placeholder="Enter passing year" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12} md={8}>
-                  <Form.Item name="universityName" label="University Name">
+                  <Form.Item name="universityName" label="University Name" rules={[{ required: true, message: 'University name is required' }]}>
                     <Input placeholder="Enter university name" />
                   </Form.Item>
                 </Col>
@@ -417,7 +421,7 @@ const MultiStepEmployeeForm = () => {
           {/* Step 4: Employment */}
           {currentStep === 3 && (
             <>
-              <Form.Item name="experienceType" label="Experience Type">
+              <Form.Item name="experienceType" label="Experience Type" rules={[{ required: true, message: 'Experience type is required' }]}>
                 <Select placeholder="Select experience type">
                   <Option value="fresher">Fresher</Option>
                   <Option value="experienced">Experienced</Option>
@@ -498,55 +502,33 @@ const MultiStepEmployeeForm = () => {
             <>
               <Row gutter={16}>
                 <Col xs={24} sm={12}>
-                  <Form.Item name="bankName" label="Bank Name">
+                  <Form.Item name="bankName" label="Bank Name" rules={[{ required: true, message: 'Bank name is required' }]}>
                     <Input placeholder="Enter bank name" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12}>
-                  <Form.Item label="Bank Document">
+                  <Form.Item label="Bank Document" rules={[{ required: true, message: 'Bank document is required' }]}>
                     <Upload beforeUpload={(file) => handleFileChange(file, 'bank_document')} showUploadList={false} accept=".pdf">
                       <Button icon={<UploadOutlined />}>{fileList.bank_document ? fileList.bank_document.name : 'Upload PDF'}</Button>
                     </Upload>
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12}>
-                  <Form.Item name="accountNumber" label="Account Number">
+                  <Form.Item name="accountNumber" label="Account Number" rules={[{ required: true, message: 'Account number is required' }, { pattern: /^[0-9]{9,18}$/, message: 'Enter valid account number' }]}>
                     <Input placeholder="Enter account number" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12}>
-                  <Form.Item name="ifscCode" label="IFSC Code">
+                  <Form.Item name="ifscCode" label="IFSC Code" rules={[{ required: true, message: 'IFSC code is required' }, { pattern: /^[A-Z]{4}0[A-Z0-9]{6}$/, message: 'Enter valid IFSC code (e.g. SBIN0001234)' }]}>
                     <Input placeholder="Enter IFSC code" />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12}>
-                  <Form.Item name="accountHolderName" label="Account Holder Name">
+                  <Form.Item name="accountHolderName" label="Account Holder Name" rules={[{ required: true, message: 'Account holder name is required' }]}>
                     <Input placeholder="Enter account holder name" />
                   </Form.Item>
                 </Col>
-                <Col xs={24} sm={12}>
-                  <Form.Item name="panNumberBank" label="PAN Number">
-                    <Input placeholder="Enter PAN number" />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12}>
-                  <Form.Item name="uanNumber" label="UAN Number">
-                    <Input placeholder="Enter UAN number" />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12}>
-                  <Form.Item name="esicNumber" label="ESIC Number">
-                    <Input placeholder="Enter ESIC number" />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12}>
-                  <Form.Item name="taxRegime" label="Tax Regime">
-                    <Select placeholder="Select tax regime">
-                      <Option value="old">Old Regime</Option>
-                      <Option value="new">New Regime</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
+
               </Row>
             </>
           )}
@@ -566,7 +548,7 @@ const MultiStepEmployeeForm = () => {
           </span>
           
           {currentStep < 4 ? (
-            <Button type="primary" size="large" onClick={() => setCurrentStep(currentStep + 1)}>
+            <Button type="primary" size="large" onClick={handleNext}>
               Next
             </Button>
           ) : (

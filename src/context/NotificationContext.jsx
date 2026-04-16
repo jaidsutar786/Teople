@@ -79,18 +79,18 @@ export const NotificationProvider = ({ children }) => {
     } catch { }
   }, [role])
 
-  // ✅ WebSocket - TEMPORARILY DISABLED
+  // ✅ WebSocket - sirf ek baar connect, state directly update karo (no API call)
   useEffect(() => {
     const token = localStorage.getItem('accessToken')
     if (!token || !role) return
 
+    // Initial data load - sirf ek baar
     loadInitialData()
     if (role === 'admin') loadLiveWorkingCount()
 
-    // WebSocket temporarily disabled
-    /*
     const connect = () => {
-      const ws = new WebSocket(`ws://127.0.0.1:8000/ws/notifications/?token=${token}`)
+      const wsBase = (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000').replace('http', 'ws')
+      const ws = new WebSocket(`${wsBase}/ws/notifications/?token=${token}`)
       wsRef.current = ws
 
       ws.onopen = () => setIsConnected(true)
@@ -155,7 +155,6 @@ export const NotificationProvider = ({ children }) => {
       clearTimeout(reconnectTimerRef.current)
       wsRef.current?.close()
     }
-    */
   }, [role])
 
   // ✅ Tab visible hone par sirf reconnect check karo - API call nahi
