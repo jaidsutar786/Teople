@@ -583,8 +583,10 @@ import axios from "axios";
 import { saveAs } from "file-saver";
 
 // Axios instance
+const API_BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api",
+  baseURL: `${API_BASE}/api`,
 });
 
 // ------------------- Interceptors -------------------
@@ -606,7 +608,7 @@ const refreshAccessToken = async () => {
       return null;
     }
 
-    const response = await axios.post("http://127.0.0.1:8000/api/token/refresh/", { refresh: refreshToken });
+    const response = await axios.post(`${API_BASE}/api/token/refresh/`, { refresh: refreshToken });
     const newAccess = response.data.access;
     localStorage.setItem("accessToken", newAccess);
     return newAccess;
@@ -648,7 +650,7 @@ api.interceptors.response.use(
 export const getOneTimeISTTime = async () => {
   try {
     const token = localStorage.getItem("accessToken");
-    const response = await axios.get("http://127.0.0.1:8000/api/get-one-time-ist-time/", {
+    const response = await axios.get(`${API_BASE}/api/get-one-time-ist-time/`, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
