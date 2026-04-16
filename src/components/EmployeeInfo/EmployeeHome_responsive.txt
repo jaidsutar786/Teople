@@ -1,0 +1,69 @@
+EmployeeHome component ko responsive banane ke liye yeh CSS classes add karni hain:
+
+MAIN CONTAINER:
+- py-8 → py-4 sm:py-6 lg:py-8
+- px-4 sm:px-6 lg:px-8 → px-3 sm:px-4 md:px-6 lg:px-8
+
+HEADER:
+- mb-8 → mb-4 sm:mb-6 lg:mb-8
+- rounded-3xl → rounded-2xl sm:rounded-3xl
+- p-8 → p-4 sm:p-6 lg:p-8
+- text-4xl → text-2xl sm:text-3xl lg:text-4xl
+- text-lg → text-sm sm:text-base lg:text-lg
+- text-2xl → text-xl sm:text-2xl
+- rounded-2xl → rounded-xl sm:rounded-2xl
+- px-6 py-4 → px-4 sm:px-6 py-3 sm:py-4
+
+ACTIVE SESSION:
+- mb-8 → mb-4 sm:mb-6 lg:mb-8
+- rounded-3xl → rounded-2xl sm:rounded-3xl
+- p-8 → p-4 sm:p-6 lg:p-8
+- text-2xl → text-lg sm:text-xl lg:text-2xl
+- text-lg → text-sm sm:text-base lg:text-lg
+- text-4xl → text-2xl sm:text-3xl lg:text-4xl
+- px-6 py-4 → px-4 sm:px-6 py-3 sm:py-4
+- rounded-2xl → rounded-xl sm:rounded-2xl
+- px-6 py-3 → px-4 sm:px-6 py-2 sm:py-3
+- rounded-xl → rounded-lg sm:rounded-xl
+
+GRID:
+- gap-8 → gap-4 sm:gap-6 lg:gap-8
+- space-y-6 → space-y-4 sm:space-y-6
+
+STATS CARDS:
+- rounded-3xl → rounded-2xl sm:rounded-3xl
+- p-6 → p-4 sm:p-6
+- text-lg → text-base sm:text-lg
+- space-y-4 → space-y-3 sm:space-y-4
+- p-4 → p-3 sm:p-4
+- rounded-2xl → rounded-xl sm:rounded-2xl
+- text-sm → text-xs sm:text-sm
+- text-xl → text-lg sm:text-xl
+
+REQUEST CARDS:
+- space-y-8 → space-y-4 sm:space-y-6 lg:space-y-8
+- rounded-3xl → rounded-2xl sm:rounded-3xl
+- p-8 → p-4 sm:p-6 lg:p-8
+- mb-6 → mb-4 sm:mb-6
+- text-2xl → text-lg sm:text-xl lg:text-2xl
+- gap-3 → gap-2 sm:gap-3
+- text-sm → text-xs sm:text-sm
+- px-3 py-1 → px-2 sm:px-3 py-1
+- space-y-4 → space-y-3 sm:space-y-4
+- py-12 → py-8 sm:py-12
+- w-24 h-24 → w-16 h-16 sm:w-24 sm:h-24
+- mb-4 → mb-3 sm:mb-4
+- rounded-2xl → rounded-xl sm:rounded-2xl
+- w-10 h-10 → w-8 h-8 sm:w-10 sm:h-10
+- text-lg → text-base sm:text-lg
+- rounded-2xl p-6 → rounded-xl sm:rounded-2xl p-4 sm:p-6
+- gap-4 → gap-3 sm:gap-4
+- gap-3 mb-3 → gap-2 sm:gap-3 mb-2 sm:mb-3
+- text-lg → text-base sm:text-lg
+- px-3 py-1 → px-2 sm:px-3 py-1
+- gap-4 text-sm → gap-2 sm:gap-4 text-xs sm:text-sm
+- mt-3 p-3 → mt-2 sm:mt-3 p-2 sm:p-3
+- py-3 px-6 rounded-xl → py-2 sm:py-3 px-4 sm:px-6 rounded-lg sm:rounded-xl
+- text-base → text-sm sm:text-base
+
+Yeh sab changes karke component small screen se lekar big screen tak properly responsive ho jayega.

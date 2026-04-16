@@ -1,0 +1,211 @@
+.error-card-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+  backdrop-filter: blur(4px);
+  padding: 16px;
+}
+
+.error-card-wrapper {
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-card {
+  position: relative;
+  animation: cardSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.error-card-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.error-card-icon {
+  animation: iconBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.error-card-icon.success-icon {
+  animation: successPulse 0.8s ease-in-out;
+}
+
+.error-card-icon.error-icon {
+  animation: errorShake 0.6s ease-in-out;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card Slide In Animation */
+@keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Icon Bounce Animation */
+@keyframes iconBounce {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotateZ(-45deg);
+  }
+  50% {
+    transform: scale(1.1) rotateZ(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateZ(0deg);
+  }
+}
+
+/* Success Pulse Animation - Checkmark */
+@keyframes successPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotateZ(-45deg);
+  }
+  50% {
+    transform: scale(1.2) rotateZ(5deg);
+  }
+  75% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateZ(0deg);
+  }
+}
+
+/* Error Shake Animation - X Circle */
+@keyframes errorShake {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotateZ(45deg);
+  }
+  10% {
+    transform: translateX(-5px) rotateZ(-5deg);
+  }
+  20% {
+    transform: translateX(5px) rotateZ(5deg);
+  }
+  30% {
+    transform: translateX(-5px) rotateZ(-5deg);
+  }
+  40% {
+    transform: translateX(5px) rotateZ(5deg);
+  }
+  50% {
+    transform: scale(1.1) rotateZ(0deg);
+  }
+  75% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateZ(0deg);
+  }
+}
+
+/* Smooth transitions for button */
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .error-card-overlay {
+    padding: 16px;
+  }
+
+  .error-card {
+    padding: 24px 20px !important;
+    max-width: 380px !important;
+  }
+
+  .error-card-icon {
+    font-size: 48px !important;
+  }
+
+  h2 {
+    font-size: 15px !important;
+  }
+
+  p {
+    font-size: 12px !important;
+  }
+
+  button {
+    height: 38px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-card-overlay {
+    padding: 12px;
+  }
+
+  .error-card {
+    padding: 20px 16px !important;
+    max-width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .error-card-icon {
+    font-size: 44px !important;
+  }
+
+  h2 {
+    font-size: 14px !important;
+  }
+
+  p {
+    font-size: 11px !important;
+  }
+
+  button {
+    height: 36px !important;
+    font-size: 11px !important;
+    max-width: 100% !important;
+  }
+}
