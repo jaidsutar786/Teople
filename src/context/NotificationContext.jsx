@@ -79,15 +79,16 @@ export const NotificationProvider = ({ children }) => {
     } catch { }
   }, [role])
 
-  // ✅ WebSocket - sirf ek baar connect, state directly update karo (no API call)
+  // ✅ WebSocket - TEMPORARILY DISABLED
   useEffect(() => {
     const token = localStorage.getItem('accessToken')
     if (!token || !role) return
 
-    // Initial data load - sirf ek baar
     loadInitialData()
     if (role === 'admin') loadLiveWorkingCount()
 
+    // WebSocket temporarily disabled
+    /*
     const connect = () => {
       const ws = new WebSocket(`ws://127.0.0.1:8000/ws/notifications/?token=${token}`)
       wsRef.current = ws
@@ -138,9 +139,10 @@ export const NotificationProvider = ({ children }) => {
         } catch { }
       }
 
-      ws.onclose = () => {
+      ws.onclose = (e) => {
         setIsConnected(false)
-        // Reconnect after 3s
+        // Auth rejected - reconnect mat karo
+        if (e.code === 1008 || e.code === 4001 || e.code === 4003) return
         reconnectTimerRef.current = setTimeout(connect, 3000)
       }
 
@@ -153,7 +155,8 @@ export const NotificationProvider = ({ children }) => {
       clearTimeout(reconnectTimerRef.current)
       wsRef.current?.close()
     }
-  }, [role]) // ✅ loadInitialData dependency nahi - sirf role change par reconnect
+    */
+  }, [role])
 
   // ✅ Tab visible hone par sirf reconnect check karo - API call nahi
   useEffect(() => {

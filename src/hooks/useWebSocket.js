@@ -12,7 +12,7 @@ export const useWebSocket = () => {
       const token = localStorage.getItem('accessToken')
       if (!token) return
 
-      const wsUrl = `ws://localhost:8000/ws/notifications/`
+      const wsUrl = `ws://localhost:8000/ws/notifications/?token=${token}`
       socketRef.current = new WebSocket(wsUrl)
 
       socketRef.current.onopen = () => {
@@ -51,12 +51,13 @@ export const useWebSocket = () => {
         console.log('🔌 WebSocket disconnected:', event.code)
         setIsConnected(false)
         
-        if (event.code !== 1000) {
-          reconnectTimeoutRef.current = setTimeout(() => {
-            console.log('🔄 Attempting to reconnect...')
-            connect()
-          }, 3000)
-        }
+        // Don't reconnect if auth rejected
+        if (event.code === 1000 || event.code === 4001 || event.code === 1008) return
+        
+        reconnectTimeoutRef.current = setTimeout(() => {
+          console.log('🔄 Attempting to reconnect...')
+          connect()
+        }, 3000)
       }
 
       socketRef.current.onerror = (error) => {
@@ -86,8 +87,9 @@ export const useWebSocket = () => {
   }
 
   useEffect(() => {
-    connect()
-    return () => disconnect()
+    // TEMPORARILY DISABLED
+    // connect()
+    // return () => disconnect()
   }, [])
 
   return {

@@ -21,8 +21,9 @@ export const useRequestsWebSocket = (onMessage) => {
       } catch { }
     }
 
-    ws.current.onclose = () => {
-      // Reconnect after 3 seconds
+    ws.current.onclose = (e) => {
+      // code 4001 = auth rejected, don't reconnect
+      if (e.code === 4001 || e.code === 1008) return
       reconnectTimer.current = setTimeout(connect, 3000)
     }
 
@@ -32,10 +33,11 @@ export const useRequestsWebSocket = (onMessage) => {
   }, [])
 
   useEffect(() => {
-    connect()
-    return () => {
-      clearTimeout(reconnectTimer.current)
-      ws.current?.close()
-    }
+    // TEMPORARILY DISABLED
+    // connect()
+    // return () => {
+    //   clearTimeout(reconnectTimer.current)
+    //   ws.current?.close()
+    // }
   }, [connect])
 }
