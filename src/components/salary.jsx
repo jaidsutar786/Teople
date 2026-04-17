@@ -28,6 +28,7 @@ const SalaryManagement = () => {
   const [excelYear, setExcelYear] = useState(new Date().getFullYear())
   const [search, setSearch] = useState("")
   const [notifSending, setNotifSending] = useState(false)
+  const [notifResult, setNotifResult] = useState(null)
   const [bulkGenerating, setBulkGenerating] = useState(false)
   const [bulkResult, setBulkResult] = useState(null)
   const [employeeAttendance, setEmployeeAttendance] = useState({})
