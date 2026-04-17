@@ -59,13 +59,13 @@ const Sidebar = ({ sidebarOpen, onProfileClick }) => {
       heading: "EMPLOYEE",
       items: [
         {
-          key: "/employee",
+          key: "/employee-section",
           icon: <PeopleIcon fontSize="small" />,
           label: "Employees",
-          onClick: () => toggleDropdown("/employee"),
+          onClick: () => toggleDropdown("/employee-section"),
           children: [
             {
-              key: "/employee-list",
+              key: "/employee",
               icon: <PeopleIcon fontSize="small" />,
               label: "Add Employee",
               onClick: () => navigate("/employee"),
