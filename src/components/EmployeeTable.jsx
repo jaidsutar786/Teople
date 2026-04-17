@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import { PencilSquareIcon, UserGroupIcon, UsersIcon, UserPlusIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline"
+import { UserGroupIcon, UsersIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline"
 import { getEmployees, addEmployee, updateEmployee } from "../api"
 import OfferLetterModal from "./OfferLetterModal"
 import RelievingLetterModal from "./RelievingLetterModal"
@@ -38,7 +38,7 @@ const EmployeeTable = () => {
   const [loading, setLoading] = useState(false)
   const [selectedEmployee, setSelectedEmployee] = useState(null)
   const [search, setSearch] = useState("")
-  const [deptFilter, setDeptFilter] = useState("")
+  const [positionFilter, setPositionFilter] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [pageSize] = useState(20)
   const [openMenuId, setOpenMenuId] = useState(null)
@@ -105,8 +105,8 @@ const EmployeeTable = () => {
   const filteredData = data.filter(emp => {
     const matchSearch = emp.name?.toLowerCase().includes(search.toLowerCase()) ||
       emp.email?.toLowerCase().includes(search.toLowerCase())
-    const matchDept = !deptFilter || emp.department?.toLowerCase() === deptFilter.toLowerCase()
-    return matchSearch && matchDept
+    const matchPosition = !positionFilter || emp.position?.toLowerCase().includes(positionFilter.toLowerCase())
+    return matchSearch && matchPosition
   })
 
   const totalRecords = filteredData.length
@@ -191,7 +191,7 @@ const EmployeeTable = () => {
   const setFv = (key, val) => setFormValues(prev => ({ ...prev, [key]: val }))
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div>
       <div className="p-6 max-w-[1600px] mx-auto">
 
         {/* Page Header */}
@@ -226,16 +226,17 @@ const EmployeeTable = () => {
               className="border border-gray-200 rounded-lg pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300 w-52 bg-white" />
           </div>
           <select 
-            value={deptFilter}
-            onChange={e => setDeptFilter(e.target.value)}
+            value={positionFilter}
+            onChange={e => setPositionFilter(e.target.value)}
             className="border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-500 focus:outline-none bg-white"
           >
-            <option value="">All Departments</option>
-            <option value="engineering">Engineering</option>
-            <option value="design">Design</option>
-            <option value="marketing">Marketing</option>
-            <option value="hr">Human Resources</option>
-            <option value="finance">Finance</option>
+            <option value="">All Positions</option>
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
+            <option value="fullstack">Fullstack</option>
+            <option value="designer">Designer</option>
+            <option value="manager">Manager</option>
+            <option value="hr">HR</option>
           </select>
         </div>
 
@@ -245,8 +246,8 @@ const EmployeeTable = () => {
             <table className="w-full table-fixed">
               <thead>
                 <tr className="border-b border-gray-100 bg-gray-50/60">
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-[110px] whitespace-nowrap">Employee ID</th>
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-[220px]">Name</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-[100px]">Employee Id</th>
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-[120px]">Phone</th>
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-[110px]">Join Date</th>
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-[120px]">Department</th>
@@ -260,16 +261,15 @@ const EmployeeTable = () => {
                 {paginatedData.map((emp) => (
                   <tr key={emp.id} className="hover:bg-gray-50/70 transition-colors">
                     <td className="px-4 py-3">
+                      <span className="text-sm text-gray-900">{emp.id}</span>
+                    </td>
+                    <td className="px-4 py-3">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                        <div className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 overflow-hidden">
                           {emp.profile_picture ? (
-                            <img
-                              src={emp.profile_picture}
-                              alt={emp.name}
-                              className="w-full h-full object-cover"
-                            />
+                            <img src={emp.profile_picture} alt={emp.name} className="w-full h-full object-cover" />
                           ) : (
-                            <span className="text-indigo-600 text-xs font-semibold">{emp.name?.charAt(0)?.toUpperCase()}</span>
+                            <span className="text-gray-600 text-xs font-semibold">{emp.name?.charAt(0)?.toUpperCase()}</span>
                           )}
                         </div>
                         <div>
@@ -278,19 +278,10 @@ const EmployeeTable = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-3">
-                      <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">{emp.id}</span>
-                    </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{emp.phone || <span className="text-gray-300">—</span>}</td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{formatDate(emp.join_date) || <span className="text-gray-300">—</span>}</td>
-                    <td className="px-4 py-3">
-                      {emp.department ? (
-                        <span className="px-2.5 py-0.5 rounded-full text-xs font-medium capitalize bg-violet-50 text-violet-700 border border-violet-100">
-                          {emp.department}
-                        </span>
-                      ) : <span className="text-gray-300">—</span>}
-                    </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{emp.position || <span className="text-gray-300">—</span>}</td>
+                    <td className="px-4 py-3 text-sm text-gray-700">{emp.phone || <span className="text-gray-300">—</span>}</td>
+                    <td className="px-4 py-3 text-sm text-gray-700">{formatDate(emp.join_date) || <span className="text-gray-300">—</span>}</td>
+                    <td className="px-4 py-3 text-sm text-gray-700 capitalize">{emp.department || <span className="text-gray-300">—</span>}</td>
+                    <td className="px-4 py-3 text-sm text-gray-700">{emp.position || <span className="text-gray-300">—</span>}</td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-1.5">
                         {emp.offer_letter_sent && (
@@ -328,7 +319,7 @@ const EmployeeTable = () => {
                         <div className="absolute right-8 top-8 bg-white border border-gray-200 rounded-lg shadow-lg z-10 w-32 py-1">
                           <button onClick={() => { handleEdit(emp); setOpenMenuId(null) }}
                             className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2">
-                            <PencilSquareIcon className="w-3.5 h-3.5" /> Edit
+                            Edit
                           </button>
                         </div>
                       )}

@@ -10,6 +10,19 @@ import {
 } from '../api';
 import { toast } from 'react-hot-toast';
 import "../css/AdminHome.css";
+import RefreshIcon from '@mui/icons-material/Refresh';
+import PeopleIcon from '@mui/icons-material/People';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import BusinessIcon from '@mui/icons-material/Business';
+import BoltIcon from '@mui/icons-material/Bolt';
+import PersonIcon from '@mui/icons-material/Person';
+import CloseIcon from '@mui/icons-material/Close';
+import ArticleIcon from '@mui/icons-material/Article';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import StopIcon from '@mui/icons-material/Stop';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 const AdminHome = () => {
   const [dashboardData, setDashboardData] = useState(null);
@@ -216,7 +229,7 @@ const AdminHome = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading professional monitoring dashboard...</p>
@@ -226,7 +239,7 @@ const AdminHome = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-2 sm:py-4 lg:py-6">
+    <div className="py-2 sm:py-4 lg:py-6">
       <div className="max-w-7xl mx-auto px-2 sm:px-3 lg:px-4">
         {/* Header */}
         <div className="mb-3 sm:mb-4 lg:mb-6 bg-white rounded-xl sm:rounded-2xl shadow-sm p-3 sm:p-4 lg:p-6 border border-gray-200">
@@ -244,9 +257,7 @@ const AdminHome = () => {
                 onClick={refreshData}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-1.5 shadow-lg"
               >
-                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
+                <RefreshIcon style={{ fontSize: 16 }} />
                 Refresh
               </button>
               <div className="bg-blue-600 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl shadow-lg text-center flex-1 lg:flex-none">
@@ -266,9 +277,7 @@ const AdminHome = () => {
           <div className="bg-white rounded-lg sm:rounded-xl shadow-sm p-2.5 sm:p-3 lg:p-4 border border-gray-200 hover:shadow-md transition-all duration-200">
             <div className="flex items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-lg">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
+                <PeopleIcon style={{ fontSize: 20, color: '#fff' }} />
               </div>
               <div>
                 <p className="text-xs font-medium text-gray-600">Employees</p>
@@ -280,9 +289,7 @@ const AdminHome = () => {
           <div className="bg-white rounded-lg sm:rounded-xl shadow-sm p-2.5 sm:p-3 lg:p-4 border border-gray-200 hover:shadow-md transition-all duration-200">
             <div className="flex items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-lg">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <CheckCircleIcon style={{ fontSize: 20, color: '#fff' }} />
               </div>
               <div>
                 <p className="text-xs font-medium text-gray-600">Active</p>
@@ -294,9 +301,7 @@ const AdminHome = () => {
           <div className="bg-white rounded-lg sm:rounded-xl shadow-sm p-2.5 sm:p-3 lg:p-4 border border-gray-200 hover:shadow-md transition-all duration-200">
             <div className="flex items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-yellow-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-lg">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <AccessTimeIcon style={{ fontSize: 20, color: '#fff' }} />
               </div>
               <div>
                 <p className="text-xs font-medium text-gray-600">Pending</p>
@@ -308,9 +313,7 @@ const AdminHome = () => {
           <div className="bg-white rounded-lg sm:rounded-xl shadow-sm p-2.5 sm:p-3 lg:p-4 border border-gray-200 hover:shadow-md transition-all duration-200">
             <div className="flex items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-lg">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
+                <BusinessIcon style={{ fontSize: 20, color: '#fff' }} />
               </div>
               <div>
                 <p className="text-xs font-medium text-gray-600">Depts</p>
@@ -326,9 +329,7 @@ const AdminHome = () => {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 sm:mb-4 gap-2">
               <h2 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 flex items-center gap-2">
                 <div className="p-1.5 bg-green-100 rounded-lg">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+                  <BoltIcon style={{ fontSize: 20, color: '#16a34a' }} />
                 </div>
                 Active Sessions
                 <span className="bg-green-100 text-green-800 px-2 py-0.5 rounded-full text-xs font-medium">
@@ -339,9 +340,7 @@ const AdminHome = () => {
                 onClick={refreshData}
                 className="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-1.5"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
+                <RefreshIcon style={{ fontSize: 16 }} />
                 Refresh
               </button>
             </div>
@@ -350,9 +349,7 @@ const AdminHome = () => {
               {activeSessions.length === 0 ? (
                 <div className="text-center py-12 text-gray-500">
                   <div className="w-24 h-24 mx-auto mb-4 bg-gray-100 rounded-2xl flex items-center justify-center">
-                    <svg className="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    <AccessTimeIcon style={{ fontSize: 40, color: '#d1d5db' }} />
                   </div>
                   <p className="text-lg font-medium">No active work sessions</p>
                   <p className="text-sm mt-1">Active sessions will appear here when employees start working</p>
@@ -376,15 +373,11 @@ const AdminHome = () => {
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
                           <div className="flex items-center gap-2">
-                            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
+                          <BusinessIcon style={{ fontSize: 16, color: '#9ca3af' }} />
                             {session.department} • {session.session_type?.replace('_', ' ')}
                           </div>
                           <div className="flex items-center gap-2">
-                            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
+                          <AccessTimeIcon style={{ fontSize: 16, color: '#9ca3af' }} />
                             Started: {formatTimeIST(session.start_time_ist || session.start_time)}
                           </div>
                         </div>
@@ -431,18 +424,14 @@ const AdminHome = () => {
                           }`}
                         disabled={!session.employee_id}
                       >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
+                        <PersonIcon style={{ fontSize: 16, color: '#fff' }} />
                         {session.employee_id ? 'View Employee' : 'ID Missing'}
                       </button>
                       <button
                         onClick={() => handleViewSessionDetails(session.id)}
                         className="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                       >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
+                        <ArticleIcon style={{ fontSize: 16, color: '#fff' }} />
                         Session Details
                       </button>
                     </div>
@@ -457,9 +446,7 @@ const AdminHome = () => {
             <div className="flex justify-between items-center mb-4 sm:mb-6">
               <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 flex items-center gap-2 sm:gap-3">
                 <div className="p-1.5 sm:p-2 bg-blue-100 rounded-lg sm:rounded-xl">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
+                  <PersonIcon style={{ fontSize: 22, color: '#2563eb' }} />
                 </div>
                 {employeeDetails ? employeeDetails.employee.name : 'Employee Details'}
               </h2>
@@ -471,9 +458,7 @@ const AdminHome = () => {
                   }}
                   className="bg-gray-500 hover:bg-gray-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-sm font-medium transition-colors flex items-center gap-2"
                 >
-                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  <CloseIcon style={{ fontSize: 16 }} />
                   Clear
                 </button>
               )}
@@ -483,9 +468,7 @@ const AdminHome = () => {
               {!employeeDetails ? (
                 <div className="text-center py-12 text-gray-500">
                   <div className="w-24 h-24 mx-auto mb-4 bg-gray-100 rounded-2xl flex items-center justify-center">
-                    <svg className="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
+                    <PersonIcon style={{ fontSize: 40, color: '#d1d5db' }} />
                   </div>
                   <p className="text-lg font-medium">Select an Employee</p>
                   <p className="text-sm mt-1">Click "View Employee" on any active session to see detailed information</p>
@@ -632,9 +615,7 @@ const AdminHome = () => {
                     onClick={() => setSessionDetails(null)}
                     className="text-gray-400 hover:text-gray-600 transition-colors p-2 hover:bg-gray-100 rounded-xl"
                   >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <CloseIcon style={{ fontSize: 22 }} />
                   </button>
                 </div>
               </div>
@@ -673,17 +654,13 @@ const AdminHome = () => {
                   <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200">
                     <h4 className="font-semibold text-gray-900 text-lg mb-4 flex items-center gap-3">
                       <div className="p-2 bg-green-100 rounded-xl">
-                        <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                        </svg>
+                        <PlayArrowIcon style={{ fontSize: 20, color: '#16a34a' }} />
                       </div>
                       Session Start
                     </h4>
                     <div className="space-y-4">
                       <div className="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-green-200">
-                        <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                        <AccessTimeIcon style={{ fontSize: 16, color: '#16a34a' }} />
                         <span className="text-sm font-medium text-gray-700">Time:</span>
                         <span className="text-sm text-gray-600">{sessionDetails.start_time_ist}</span>
                       </div>
@@ -701,18 +678,13 @@ const AdminHome = () => {
                   <div className="bg-gradient-to-r from-red-50 to-pink-50 rounded-2xl p-6 border border-red-200">
                     <h4 className="font-semibold text-gray-900 text-lg mb-4 flex items-center gap-3">
                       <div className="p-2 bg-red-100 rounded-xl">
-                        <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
-                        </svg>
+                        <StopIcon style={{ fontSize: 20, color: '#dc2626' }} />
                       </div>
                       Session End
                     </h4>
                     <div className="space-y-4">
                       <div className="flex items-center gap-3 bg-white/50 p-3 rounded-xl border border-red-200">
-                        <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                        <AccessTimeIcon style={{ fontSize: 16, color: '#dc2626' }} />
                         <span className="text-sm font-medium text-gray-700">Time:</span>
                         <span className="text-sm text-gray-600">{sessionDetails.end_time_ist || 'Still active'}</span>
                       </div>
@@ -733,9 +705,7 @@ const AdminHome = () => {
                   <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-6 border border-emerald-200">
                     <h4 className="font-semibold text-gray-900 text-lg mb-4 flex items-center gap-3">
                       <div className="p-2 bg-emerald-100 rounded-xl">
-                        <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                        <TaskAltIcon style={{ fontSize: 20, color: '#059669' }} />
                       </div>
                       Work Completed
                     </h4>
@@ -750,9 +720,7 @@ const AdminHome = () => {
                   <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-6 border border-purple-200">
                     <h4 className="font-semibold text-gray-900 text-lg mb-4 flex items-center gap-3">
                       <div className="p-2 bg-purple-100 rounded-xl">
-                        <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                        </svg>
+                        <EditNoteIcon style={{ fontSize: 20, color: '#7c3aed' }} />
                       </div>
                       Session Notes
                     </h4>

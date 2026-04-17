@@ -113,7 +113,7 @@ const EmployeeManagement = () => {
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div>
       <div className="p-6 max-w-[1600px] mx-auto">
 
         {/* Header */}
@@ -138,8 +138,8 @@ const EmployeeManagement = () => {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-100 bg-gray-50/60">
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Name</th>
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Employee Id</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Name</th>
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Email</th>
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Department</th>
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
@@ -152,32 +152,22 @@ const EmployeeManagement = () => {
                   return (
                     <tr key={emp.employee.id} className="hover:bg-gray-50/70 transition-colors">
                       <td className="px-4 py-3">
+                        <span className="text-sm text-gray-900">{emp.employee.id}</span>
+                      </td>
+                      <td className="px-4 py-3">
                         <div className="flex items-center gap-2.5">
-                          <div className="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                          <div className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 overflow-hidden">
                             {emp.employee.profile_picture ? (
-                              <img
-                                src={emp.employee.profile_picture}
-                                alt={name}
-                                className="w-full h-full object-cover"
-                              />
+                              <img src={emp.employee.profile_picture} alt={name} className="w-full h-full object-cover" />
                             ) : (
-                              <span className="text-indigo-600 text-xs font-semibold">{name.charAt(0).toUpperCase()}</span>
+                              <span className="text-gray-600 text-xs font-semibold">{name.charAt(0).toUpperCase()}</span>
                             )}
                           </div>
                           <span className="text-sm font-medium text-gray-900">{name}</span>
                         </div>
                       </td>
-                      <td className="px-4 py-3">
-                        <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">{emp.employee.id}</span>
-                      </td>
-                      <td className="px-4 py-3 text-sm text-gray-500">{emp.employee.email}</td>
-                      <td className="px-4 py-3">
-                        {emp.employee.department ? (
-                          <span className="px-2.5 py-0.5 rounded-full text-xs font-medium capitalize bg-violet-50 text-violet-700 border border-violet-100">
-                            {emp.employee.department}
-                          </span>
-                        ) : <span className="text-gray-300">—</span>}
-                      </td>
+                      <td className="px-4 py-3 text-sm text-gray-700">{emp.employee.email}</td>
+                      <td className="px-4 py-3 text-sm text-gray-700 capitalize">{emp.employee.department || <span className="text-gray-300">—</span>}</td>
                       <td className="px-4 py-3">
                         <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           emp.employee.is_active ? 'bg-green-50 text-green-700 border border-green-100' : 'bg-red-50 text-red-600 border border-red-100'

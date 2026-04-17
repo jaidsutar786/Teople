@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Select, Button, Steps, message, Upload, Row, Col, Card, Spin, Divider, Space } from 'antd';
-import { 
-  UserOutlined, 
-  FileTextOutlined, 
-  BookOutlined, 
-  SolutionOutlined, 
-  BankOutlined,
-  PlusOutlined,
-  DeleteOutlined,
-  UploadOutlined,
-  CheckOutlined
-} from '@ant-design/icons';
+import PersonIcon from '@mui/icons-material/Person';
+import DescriptionIcon from '@mui/icons-material/Description';
+import SchoolIcon from '@mui/icons-material/School';
+import WorkIcon from '@mui/icons-material/Work';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
+import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import { submitEmployeeForm, clearRevisionRequest, getEmployeeProfile } from '../../api';
 import FormConfirmationModal from '../FormConfirmationModal';
 import LogoutModal from '../LogoutModal';
@@ -181,11 +179,11 @@ const MultiStepEmployeeForm = () => {
   };
 
   const steps = [
-    { title: 'Personal Info', icon: <UserOutlined /> },
-    { title: 'Documents', icon: <FileTextOutlined /> },
-    { title: 'Education', icon: <BookOutlined /> },
-    { title: 'Employment', icon: <SolutionOutlined /> },
-    { title: 'Bank Details', icon: <BankOutlined /> }
+    { title: 'Personal Info', icon: <PersonIcon style={{ fontSize: 18 }} /> },
+    { title: 'Documents', icon: <DescriptionIcon style={{ fontSize: 18 }} /> },
+    { title: 'Education', icon: <SchoolIcon style={{ fontSize: 18 }} /> },
+    { title: 'Employment', icon: <WorkIcon style={{ fontSize: 18 }} /> },
+    { title: 'Bank Details', icon: <AccountBalanceIcon style={{ fontSize: 18 }} /> }
   ];
 
   if (dataLoading) {
@@ -313,7 +311,7 @@ const MultiStepEmployeeForm = () => {
                 <Col xs={24} sm={24} md={8}>
                   <Form.Item label="Aadhar Document" rules={[{ required: true, message: 'Aadhar document is required' }]}>
                     <Upload beforeUpload={(file) => handleFileChange(file, 'aadhar_pdf')} showUploadList={false} accept=".pdf">
-                      <Button icon={<UploadOutlined />}>{fileList.aadhar_pdf ? fileList.aadhar_pdf.name : 'Upload PDF'}</Button>
+                      <Button icon={<UploadFileIcon style={{ fontSize: 16 }} />}>{fileList.aadhar_pdf ? fileList.aadhar_pdf.name : 'Upload PDF'}</Button>
                     </Upload>
                   </Form.Item>
                 </Col>
@@ -326,7 +324,7 @@ const MultiStepEmployeeForm = () => {
                 <Col xs={24} sm={24} md={8}>
                   <Form.Item label="PAN Document" rules={[{ required: true, message: 'PAN document is required' }]}>
                     <Upload beforeUpload={(file) => handleFileChange(file, 'pan_pdf')} showUploadList={false} accept=".pdf">
-                      <Button icon={<UploadOutlined />}>{fileList.pan_pdf ? fileList.pan_pdf.name : 'Upload PDF'}</Button>
+                      <Button icon={<UploadFileIcon style={{ fontSize: 16 }} />}>{fileList.pan_pdf ? fileList.pan_pdf.name : 'Upload PDF'}</Button>
                     </Upload>
                   </Form.Item>
                 </Col>
@@ -339,7 +337,7 @@ const MultiStepEmployeeForm = () => {
                 <Col xs={24} sm={24} md={8}>
                   <Form.Item label="Passport Document">
                     <Upload beforeUpload={(file) => handleFileChange(file, 'passport_pdf')} showUploadList={false} accept=".pdf">
-                      <Button icon={<UploadOutlined />}>{fileList.passport_pdf ? fileList.passport_pdf.name : 'Upload PDF'}</Button>
+                      <Button icon={<UploadFileIcon style={{ fontSize: 16 }} />}>{fileList.passport_pdf ? fileList.passport_pdf.name : 'Upload PDF'}</Button>
                     </Upload>
                   </Form.Item>
                 </Col>
@@ -364,7 +362,7 @@ const MultiStepEmployeeForm = () => {
                 <Col xs={24} sm={24} md={8}>
                   <Form.Item label="10th Marksheet">
                     <Upload beforeUpload={(file) => handleFileChange(file, 'tenth_marksheet')} showUploadList={false} accept=".pdf">
-                      <Button icon={<UploadOutlined />}>{fileList.tenth_marksheet ? fileList.tenth_marksheet.name : 'Upload PDF'}</Button>
+                      <Button icon={<UploadFileIcon style={{ fontSize: 16 }} />}>{fileList.tenth_marksheet ? fileList.tenth_marksheet.name : 'Upload PDF'}</Button>
                     </Upload>
                   </Form.Item>
                 </Col>
@@ -382,7 +380,7 @@ const MultiStepEmployeeForm = () => {
                 <Col xs={24} sm={24} md={8}>
                   <Form.Item label="12th Marksheet">
                     <Upload beforeUpload={(file) => handleFileChange(file, 'twelfth_marksheet')} showUploadList={false} accept=".pdf">
-                      <Button icon={<UploadOutlined />}>{fileList.twelfth_marksheet ? fileList.twelfth_marksheet.name : 'Upload PDF'}</Button>
+                      <Button icon={<UploadFileIcon style={{ fontSize: 16 }} />}>{fileList.twelfth_marksheet ? fileList.twelfth_marksheet.name : 'Upload PDF'}</Button>
                     </Upload>
                   </Form.Item>
                 </Col>
@@ -410,7 +408,7 @@ const MultiStepEmployeeForm = () => {
                 <Col xs={24} sm={24} md={8}>
                   <Form.Item label="Qualification Document">
                     <Upload beforeUpload={(file) => handleFileChange(file, 'highest_qualification_doc')} showUploadList={false} accept=".pdf">
-                      <Button icon={<UploadOutlined />}>{fileList.highest_qualification_doc ? fileList.highest_qualification_doc.name : 'Upload PDF'}</Button>
+                      <Button icon={<UploadFileIcon style={{ fontSize: 16 }} />}>{fileList.highest_qualification_doc ? fileList.highest_qualification_doc.name : 'Upload PDF'}</Button>
                     </Upload>
                   </Form.Item>
                 </Col>
@@ -439,7 +437,7 @@ const MultiStepEmployeeForm = () => {
                         <Button 
                           type="link" 
                           danger 
-                          icon={<DeleteOutlined />}
+                          icon={<DeleteIcon style={{ fontSize: 16 }} />}
                           onClick={() => setCompanies(companies.filter(id => id !== companyId))}
                         >
                           Remove
@@ -471,13 +469,13 @@ const MultiStepEmployeeForm = () => {
                           <Divider orientation="left" style={{ fontSize: 12 }}>Documents (Optional)</Divider>
                           <Space wrap>
                             <Upload beforeUpload={(file) => handleFileChange(file, `company${companyId}_offer_letter`)} showUploadList={false} accept=".pdf">
-                              <Button icon={<UploadOutlined />}>Offer Letter</Button>
+                              <Button icon={<UploadFileIcon style={{ fontSize: 16 }} />}>Offer Letter</Button>
                             </Upload>
                             <Upload beforeUpload={(file) => handleFileChange(file, `company${companyId}_experience_letter`)} showUploadList={false} accept=".pdf">
-                              <Button icon={<UploadOutlined />}>Experience Letter</Button>
+                              <Button icon={<UploadFileIcon style={{ fontSize: 16 }} />}>Experience Letter</Button>
                             </Upload>
                             <Upload beforeUpload={(file) => handleFileChange(file, `company${companyId}_salary_slips`)} showUploadList={false} accept=".pdf">
-                              <Button icon={<UploadOutlined />}>Salary Slips</Button>
+                              <Button icon={<UploadFileIcon style={{ fontSize: 16 }} />}>Salary Slips</Button>
                             </Upload>
                           </Space>
                         </Col>
@@ -487,7 +485,7 @@ const MultiStepEmployeeForm = () => {
                   <Button 
                     type="dashed" 
                     onClick={() => setCompanies([...companies, companies.length + 1])}
-                    icon={<PlusOutlined />}
+                    icon={<AddIcon style={{ fontSize: 18 }} />}
                     block
                   >
                     Add Another Company
@@ -509,7 +507,7 @@ const MultiStepEmployeeForm = () => {
                 <Col xs={24} sm={12}>
                   <Form.Item label="Bank Document" rules={[{ required: true, message: 'Bank document is required' }]}>
                     <Upload beforeUpload={(file) => handleFileChange(file, 'bank_document')} showUploadList={false} accept=".pdf">
-                      <Button icon={<UploadOutlined />}>{fileList.bank_document ? fileList.bank_document.name : 'Upload PDF'}</Button>
+                      <Button icon={<UploadFileIcon style={{ fontSize: 16 }} />}>{fileList.bank_document ? fileList.bank_document.name : 'Upload PDF'}</Button>
                     </Upload>
                   </Form.Item>
                 </Col>
@@ -557,7 +555,7 @@ const MultiStepEmployeeForm = () => {
               size="large" 
               onClick={handlePreSubmit} 
               loading={loading}
-              icon={<CheckOutlined />}
+              icon={<CheckCircleOutlinedIcon style={{ fontSize: 18 }} />}
             >
               Review & Submit
             </Button>

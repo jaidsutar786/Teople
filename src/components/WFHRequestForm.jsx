@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react"
 import { getWFHRequests, createWFHRequest, exportWFHCSV, exportWFHPDF } from "../api"
 import { toast } from "react-hot-toast"
-import { HomeIcon, MagnifyingGlassIcon, PlusCircleIcon, ClockIcon, DocumentArrowDownIcon } from "@heroicons/react/24/outline"
+import HomeWorkIcon from '@mui/icons-material/HomeWork'
+import SearchIcon from '@mui/icons-material/Search'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutlined'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import FileDownloadIcon from '@mui/icons-material/FileDownload'
 
 const WFHRequestForm = () => {
   const [activeTab, setActiveTab] = useState("apply")
@@ -89,7 +93,7 @@ const WFHRequestForm = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="p-2.5 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-md">
-            <HomeIcon className="w-6 h-6 text-white" />
+            <HomeWorkIcon style={{ fontSize: 24, color: '#fff' }} />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Work From Home</h1>
@@ -110,8 +114,8 @@ const WFHRequestForm = () => {
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="flex border-b border-gray-200">
           {[
-            { key: "apply",    label: "Apply WFH",   icon: PlusCircleIcon },
-            { key: "requests", label: "My Requests", icon: ClockIcon, count: requests.length },
+            { key: "apply",    label: "Apply WFH",   icon: AddCircleOutlineIcon },
+            { key: "requests", label: "My Requests", icon: AccessTimeIcon, count: requests.length },
           ].map(tab => (
             <button key={tab.key} onClick={() => setActiveTab(tab.key)}
               className={`flex items-center gap-2 px-6 py-4 text-sm font-semibold border-b-2 transition-all ${
@@ -120,7 +124,7 @@ const WFHRequestForm = () => {
                   : "border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50"
               }`}
             >
-              <tab.icon className="w-4 h-4" />
+              <tab.icon style={{ fontSize: 18 }} />
               {tab.label}
               {tab.count !== undefined && (
                 <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${activeTab === tab.key ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-600"}`}>
@@ -169,7 +173,7 @@ const WFHRequestForm = () => {
               </div>
               <div className="md:col-span-2 flex justify-end">
                 <button type="submit" disabled={submitting}
-                  className="px-8 py-2.5 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg font-semibold text-sm shadow-md transition-all disabled:opacity-60">
+                  className="px-8 py-2.5 border border-orange-500 text-orange-500 rounded-lg font-semibold text-sm transition-all disabled:opacity-60">
                   {submitting ? "Submitting..." : "Submit WFH Request"}
                 </button>
               </div>
@@ -182,18 +186,18 @@ const WFHRequestForm = () => {
           <div>
             <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100 bg-gray-50/50">
               <div className="relative">
-                <MagnifyingGlassIcon className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <SearchIcon style={{ fontSize: 16, color: '#9ca3af' }} className="absolute left-3 top-1/2 -translate-y-1/2" />
                 <input type="text" placeholder="Search requests..."
                   className="pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-green-500 focus:border-transparent w-64"
                   onChange={e => { setSearch(e.target.value); setCurrentPage(1) }}
                 />
               </div>
               <div className="flex gap-2">
-                <button onClick={handleExportCSV} className="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
-                  <DocumentArrowDownIcon className="w-4 h-4 text-green-600" /> CSV
+                <button onClick={handleExportCSV} className="flex items-center gap-1.5 px-3 py-2 bg-white border border-orange-500 rounded-lg text-sm font-medium text-orange-500">
+                  <FileDownloadIcon style={{ fontSize: 18 }} /> CSV
                 </button>
-                <button onClick={handleExportPDF} className="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
-                  <DocumentArrowDownIcon className="w-4 h-4 text-blue-600" /> PDF
+                <button onClick={handleExportPDF} className="flex items-center gap-1.5 px-3 py-2 bg-white border border-orange-500 rounded-lg text-sm font-medium text-orange-500">
+                  <FileDownloadIcon style={{ fontSize: 18 }} /> PDF
                 </button>
               </div>
             </div>
@@ -204,7 +208,7 @@ const WFHRequestForm = () => {
               </div>
             ) : currentRequests.length === 0 ? (
               <div className="text-center py-16">
-                <HomeIcon className="w-12 h-12 mx-auto text-gray-300 mb-3" />
+              <HomeWorkIcon style={{ fontSize: 48, color: '#d1d5db' }} className="mx-auto mb-3" />
                 <p className="text-gray-500 font-medium">No WFH requests found</p>
                 <p className="text-gray-400 text-sm mt-1">Submit your first WFH request</p>
               </div>

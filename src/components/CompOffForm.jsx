@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react"
 import { getCompOffRequests, createCompOffRequest, exportCompOffCSV, exportCompOffPDF } from "../api"
 import { toast } from "react-hot-toast"
-import { ClockIcon, MagnifyingGlassIcon, PlusCircleIcon, DocumentArrowDownIcon, CalendarIcon } from "@heroicons/react/24/outline"
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import SearchIcon from '@mui/icons-material/Search'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutlined'
+import FileDownloadIcon from '@mui/icons-material/FileDownload'
 
 const CompOffForm = () => {
   const [activeTab, setActiveTab] = useState("apply")
@@ -82,7 +85,7 @@ const CompOffForm = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="p-2.5 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl shadow-md">
-            <ClockIcon className="w-6 h-6 text-white" />
+            <AccessTimeIcon style={{ fontSize: 24, color: '#fff' }} />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Compensatory Off</h1>
@@ -103,8 +106,8 @@ const CompOffForm = () => {
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="flex border-b border-gray-200">
           {[
-            { key: "apply",    label: "Apply Comp Off", icon: PlusCircleIcon },
-            { key: "requests", label: "My Requests",    icon: ClockIcon, count: requests.length },
+            { key: "apply",    label: "Apply Comp Off", icon: AddCircleOutlineIcon },
+            { key: "requests", label: "My Requests",    icon: AccessTimeIcon, count: requests.length },
           ].map(tab => (
             <button key={tab.key} onClick={() => setActiveTab(tab.key)}
               className={`flex items-center gap-2 px-6 py-4 text-sm font-semibold border-b-2 transition-all ${
@@ -113,7 +116,7 @@ const CompOffForm = () => {
                   : "border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50"
               }`}
             >
-              <tab.icon className="w-4 h-4" />
+              <tab.icon style={{ fontSize: 18 }} />
               {tab.label}
               {tab.count !== undefined && (
                 <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${activeTab === tab.key ? "bg-purple-100 text-purple-700" : "bg-gray-100 text-gray-600"}`}>
@@ -154,7 +157,7 @@ const CompOffForm = () => {
               </div>
               <div className="md:col-span-2 flex justify-end">
                 <button type="submit"
-                  className="px-8 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-lg font-semibold text-sm shadow-md transition-all">
+                  className="px-8 py-2.5 border border-orange-500 text-orange-500 rounded-lg font-semibold text-sm transition-all">
                   Submit Comp Off Request
                 </button>
               </div>
@@ -167,18 +170,18 @@ const CompOffForm = () => {
           <div>
             <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100 bg-gray-50/50">
               <div className="relative">
-                <MagnifyingGlassIcon className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <SearchIcon style={{ fontSize: 16, color: '#9ca3af' }} className="absolute left-3 top-1/2 -translate-y-1/2" />
                 <input type="text" placeholder="Search requests..."
                   className="pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent w-64"
                   onChange={e => { setSearch(e.target.value); setCurrentPage(1) }}
                 />
               </div>
               <div className="flex gap-2">
-                <button onClick={handleExportCSV} className="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
-                  <DocumentArrowDownIcon className="w-4 h-4 text-green-600" /> CSV
+                <button onClick={handleExportCSV} className="flex items-center gap-1.5 px-3 py-2 bg-white border border-orange-500 rounded-lg text-sm font-medium text-orange-500">
+                  <FileDownloadIcon style={{ fontSize: 18 }} /> CSV
                 </button>
-                <button onClick={handleExportPDF} className="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
-                  <DocumentArrowDownIcon className="w-4 h-4 text-blue-600" /> PDF
+                <button onClick={handleExportPDF} className="flex items-center gap-1.5 px-3 py-2 bg-white border border-orange-500 rounded-lg text-sm font-medium text-orange-500">
+                  <FileDownloadIcon style={{ fontSize: 18 }} /> PDF
                 </button>
               </div>
             </div>
@@ -189,7 +192,7 @@ const CompOffForm = () => {
               </div>
             ) : currentRequests.length === 0 ? (
               <div className="text-center py-16">
-                <ClockIcon className="w-12 h-12 mx-auto text-gray-300 mb-3" />
+              <AccessTimeIcon style={{ fontSize: 48, color: '#d1d5db' }} className="mx-auto mb-3" />
                 <p className="text-gray-500 font-medium">No comp off requests found</p>
                 <p className="text-gray-400 text-sm mt-1">Submit your first comp off request</p>
               </div>

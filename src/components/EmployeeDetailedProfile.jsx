@@ -71,7 +71,7 @@ const EmployeeDetailedProfile = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
+      <div className="flex items-center justify-center p-6">
         <div className="w-full max-w-3xl">
           <div className="animate-pulse space-y-4">
             <div className="h-28 bg-white rounded-xl shadow-sm" />
@@ -85,7 +85,7 @@ const EmployeeDetailedProfile = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
+      <div className="flex items-center justify-center p-6">
         <div className="text-center">
           <p className="text-red-600 font-medium">{error}</p>
           <button
@@ -101,7 +101,7 @@ const EmployeeDetailedProfile = () => {
 
   if (!profileData?.personal_info) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
+      <div className="flex items-center justify-center p-6">
         <div className="text-center">
           <p className="text-gray-600 text-lg">No profile data found</p>
           <p className="text-gray-500 text-sm mt-2">Please complete the employee form first</p>
@@ -113,7 +113,7 @@ const EmployeeDetailedProfile = () => {
   const { personal_info, documents } = profileData;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="py-8 px-4">
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Notification */}
         {notification && (

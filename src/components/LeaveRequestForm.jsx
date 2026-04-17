@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react"
 import { getLeaves, createLeaveRequest } from "../api"
 import { toast } from "react-hot-toast"
-import { CalendarDaysIcon, MagnifyingGlassIcon, PlusCircleIcon, ClockIcon, CheckCircleIcon, XCircleIcon, DocumentArrowDownIcon } from "@heroicons/react/24/outline"
+import EventNoteIcon from '@mui/icons-material/EventNote'
+import SearchIcon from '@mui/icons-material/Search'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutlined'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import FileDownloadIcon from '@mui/icons-material/FileDownload'
 
 const LeaveRequestForm = () => {
   const [activeTab, setActiveTab] = useState("apply")
@@ -81,7 +85,7 @@ const LeaveRequestForm = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="p-2.5 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl shadow-md">
-            <CalendarDaysIcon className="w-6 h-6 text-white" />
+            <EventNoteIcon style={{ fontSize: 24, color: '#fff' }} />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Leave Requests</h1>
@@ -103,8 +107,8 @@ const LeaveRequestForm = () => {
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="flex border-b border-gray-200">
           {[
-            { key: "apply",    label: "Apply Leave",  icon: PlusCircleIcon },
-            { key: "requests", label: "My Requests",  icon: ClockIcon, count: requests.length },
+            { key: "apply",    label: "Apply Leave",  icon: AddCircleOutlineIcon },
+            { key: "requests", label: "My Requests",  icon: AccessTimeIcon, count: requests.length },
           ].map(tab => (
             <button
               key={tab.key}
@@ -115,7 +119,7 @@ const LeaveRequestForm = () => {
                   : "border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50"
               }`}
             >
-              <tab.icon className="w-4 h-4" />
+              <tab.icon style={{ fontSize: 18 }} />
               {tab.label}
               {tab.count !== undefined && (
                 <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${activeTab === tab.key ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-600"}`}>
@@ -170,7 +174,7 @@ const LeaveRequestForm = () => {
               </div>
               <div className="md:col-span-2 flex justify-end">
                 <button type="submit"
-                  className="px-8 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg font-semibold text-sm shadow-md transition-all"
+                  className="px-8 py-2.5 border border-orange-500 text-orange-500 rounded-lg font-semibold text-sm transition-all"
                 >
                   Submit Leave Request
                 </button>
@@ -185,18 +189,18 @@ const LeaveRequestForm = () => {
             {/* Toolbar */}
             <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100 bg-gray-50/50">
               <div className="relative">
-                <MagnifyingGlassIcon className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <SearchIcon style={{ fontSize: 16, color: '#9ca3af' }} className="absolute left-3 top-1/2 -translate-y-1/2" />
                 <input type="text" placeholder="Search requests..."
                   className="pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent w-64"
                   onChange={e => { setSearch(e.target.value); setCurrentPage(1) }}
                 />
               </div>
               <div className="flex gap-2">
-                <button className="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
-                  <DocumentArrowDownIcon className="w-4 h-4 text-green-600" /> CSV
+                <button className="flex items-center gap-1.5 px-3 py-2 bg-white border border-orange-500 rounded-lg text-sm font-medium text-orange-500">
+                  <FileDownloadIcon style={{ fontSize: 18 }} /> CSV
                 </button>
-                <button className="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
-                  <DocumentArrowDownIcon className="w-4 h-4 text-blue-600" /> PDF
+                <button className="flex items-center gap-1.5 px-3 py-2 bg-white border border-orange-500 rounded-lg text-sm font-medium text-orange-500">
+                  <FileDownloadIcon style={{ fontSize: 18 }} /> PDF
                 </button>
               </div>
             </div>
@@ -207,7 +211,7 @@ const LeaveRequestForm = () => {
               </div>
             ) : currentRequests.length === 0 ? (
               <div className="text-center py-16">
-                <CalendarDaysIcon className="w-12 h-12 mx-auto text-gray-300 mb-3" />
+              <EventNoteIcon style={{ fontSize: 48, color: '#d1d5db' }} className="mx-auto mb-3" />
                 <p className="text-gray-500 font-medium">No leave requests found</p>
                 <p className="text-gray-400 text-sm mt-1">Submit your first leave request</p>
               </div>

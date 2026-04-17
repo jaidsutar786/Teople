@@ -1,5 +1,3 @@
-"use client"
-
 import { Outlet, useLocation } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
 import Navbar from "./Navbar"
@@ -33,26 +31,27 @@ const MainLayout = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-gray-50">
+    <div className="flex flex-col h-screen overflow-hidden" style={{ backgroundColor: '#f5f7fb' }}>
       {/* Navbar - Full Width */}
-      <Navbar 
-        onProfileClick={() => setShowProfile(true)} 
+      <Navbar
+        onProfileClick={() => setShowProfile(true)}
         onToggleSidebar={handleToggleSidebar}
       />
 
-      {/* Content Area with Sidebar */}
+      {/* Sidebar + Content */}
       <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar */}
         <Sidebar
           sidebarOpen={sidebarOpen}
           onProfileClick={() => setShowProfile(true)}
         />
 
         {/* Main Content */}
-        <div ref={contentRef} className="flex-1 overflow-hidden bg-gray-50" style={{ display: 'flex', flexDirection: 'column' }}>
+        <div ref={contentRef} className="flex-1 overflow-hidden" style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#f5f7fb' }}>
           {location.pathname.includes('leave-management') ? (
-            <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-              <Outlet />
+            <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', padding: '24px' }}>
+              <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', background: '#fff', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.08)' }}>
+                <Outlet />
+              </div>
             </div>
           ) : (
             <div className="p-4 sm:p-5 lg:p-6 max-w-7xl mx-auto w-full overflow-y-auto flex-1">
@@ -68,3 +67,4 @@ const MainLayout = () => {
 }
 
 export default MainLayout
+

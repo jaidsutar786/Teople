@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { ConfigProvider } from "antd";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
@@ -21,7 +22,6 @@ import Notifications from "./components/Notifications";
 import EmployeeSalarySlips from "./components/EmployeeSalarySlips";
 import EmployeePayslip from "./components/EmployeePayslip";
 import MyOfferLetter from "./components/MyOfferLetter";
-import EmployeeFormPage from "./components/EmployeeInfo/EmployeeFormPage";
 import MultiStepEmployeeForm from "./components/EmployeeInfo/MultiStepEmployeeForm";
 import EmployeeDetailedProfile from "./components/EmployeeDetailedProfile";
 import EmployeeManagement from "./components/EmployeeManagement";
@@ -46,6 +46,23 @@ function ScrollToTop() {
 function App() {
   return (
     <NotificationProvider>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: '#f97316',
+            colorPrimaryHover: '#ea580c',
+            colorPrimaryActive: '#c2410c',
+          },
+          components: {
+            Button: {
+              defaultBorderColor: '#f97316',
+              defaultColor: '#f97316',
+              defaultHoverBorderColor: '#ea580c',
+              defaultHoverColor: '#ea580c',
+            },
+          },
+        }}
+      >
       <Router>
         <ScrollToTop />
       <Routes>
@@ -111,6 +128,7 @@ function App() {
         <Route path="/unauthorized" element={<h1>Unauthorized</h1>} />
       </Routes>
       </Router>
+      </ConfigProvider>
     </NotificationProvider>
   );
 }

@@ -613,7 +613,7 @@ const Assets = () => {
 
   // ─── LIST ────────────────────────────────────────────────────
   if (page === 'list') return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200">
       <div className="p-6 max-w-[1400px] mx-auto">
         {/* Header */}
         <div className="mb-8">
@@ -728,14 +728,14 @@ const Assets = () => {
                           <button 
                             onClick={() => openView(emp)} 
                             title="View Assets" 
-                            className="p-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
+                            className="p-2 text-orange-500 rounded-lg"
                           >
                             <PencilIcon className="w-5 h-5" />
                           </button>
                           <button 
                             onClick={() => openAssign(emp)} 
                             title="Assign Asset" 
-                            className="p-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
+                            className="p-2 text-orange-500 rounded-lg"
                           >
                             <PlusCircleIcon className="w-5 h-5" />
                           </button>
@@ -806,7 +806,7 @@ const Assets = () => {
 
   // ─── VIEW PAGE ───────────────────────────────────────────────
   if (page === 'view') return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200">
       <div className="p-6 max-w-[1400px] mx-auto">
         {/* Header */}
         <div className="mb-6">
@@ -1070,7 +1070,7 @@ const Assets = () => {
 
   // ─── ASSIGN PAGE ─────────────────────────────────────────────
   if (page === 'assign') return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
       <div className="max-w-4xl mx-auto">
 
         <BackBtn onClick={() => setPage('list')} />

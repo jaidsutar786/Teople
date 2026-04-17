@@ -512,7 +512,7 @@ const SalaryManagement = () => {
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div>
       <div className="p-6 max-w-[1600px] mx-auto">
 
         {/* Title */}
@@ -537,7 +537,7 @@ const SalaryManagement = () => {
             <button
               onClick={handleBulkSalaryGenerate}
               disabled={bulkGenerating}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 bg-white transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-2 border border-orange-500 rounded-lg text-sm font-medium text-orange-500 bg-white transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {bulkGenerating ? 'Generating...' : 'Generate All Salaries'}
             </button>
@@ -545,13 +545,13 @@ const SalaryManagement = () => {
             <button
               onClick={handleSendCompOffNotifications}
               disabled={notifSending}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 bg-white transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-2 border border-orange-500 rounded-lg text-sm font-medium text-orange-500 bg-white transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {notifSending ? 'Sending...' : 'Comp Off Notifications'}
             </button>
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 bg-white transition-colors whitespace-nowrap"
+              className="px-4 py-2 border border-orange-500 rounded-lg text-sm font-medium text-orange-500 bg-white transition-colors whitespace-nowrap"
             >
               + Add Employee
             </button>
@@ -957,7 +957,7 @@ const SalaryManagement = () => {
             <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-200 bg-gray-50 flex-shrink-0">
               <button
                 onClick={() => setDrawerEmployee(null)}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 shadow-sm"
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-orange-500 rounded-lg text-sm font-medium text-orange-500 shadow-sm"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />

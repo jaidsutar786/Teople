@@ -249,7 +249,7 @@ export default function AccountingDashboard() {
   const dateRange = `From Jan 01, ${currentDate.getFullYear()} to ${currentDate.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}`
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="p-6">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-2xl font-bold text-gray-900 mb-6">Accounting Dashboard</h1>
         

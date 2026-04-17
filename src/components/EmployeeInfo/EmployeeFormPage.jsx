@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { submitEmployeeForm, getEmployeeProfile } from '../../api';
+import PersonIcon from '@mui/icons-material/Person';
+import DescriptionIcon from '@mui/icons-material/Description';
+import SchoolIcon from '@mui/icons-material/School';
+import WorkIcon from '@mui/icons-material/Work';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutlined';
 
 const EmployeeFormPage = () => {
   const [formData, setFormData] = useState({
@@ -167,7 +175,7 @@ const EmployeeFormPage = () => {
       <div className="max-w-5xl mx-auto">
         <div className="bg-white shadow-2xl rounded-2xl overflow-hidden border border-gray-100">
           <div className="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-6">
-            <h1 className="text-3xl font-bold text-white tracking-tight">📋 Employee Information Form</h1>
+            <h1 className="text-3xl font-bold text-white tracking-tight">Employee Information Form</h1>
             <p className="text-orange-100 mt-1 text-sm">Please fill all required fields marked with *</p>
           </div>
 
@@ -176,7 +184,7 @@ const EmployeeFormPage = () => {
           <div className="border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
             <div className="bg-gradient-to-r from-orange-50 to-red-50 px-6 py-4 border-b border-gray-200">
               <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                <span className="text-2xl">👤</span> Personal Information
+                <PersonIcon style={{ color: '#f97316' }} /> Personal Information
               </h2>
             </div>
             <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -223,7 +231,7 @@ const EmployeeFormPage = () => {
           <div className="border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 px-6 py-4 border-b border-gray-200">
               <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                <span className="text-2xl">📝</span> Document Details
+                <DescriptionIcon style={{ color: '#10b981' }} /> Document Details
               </h2>
             </div>
             <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -243,7 +251,7 @@ const EmployeeFormPage = () => {
           <div className="border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 px-6 py-4 border-b border-gray-200">
               <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                <span className="text-2xl">🎓</span> Educational Qualifications
+                <SchoolIcon style={{ color: '#8b5cf6' }} /> Educational Qualifications
               </h2>
             </div>
             <div className="p-6 space-y-6">
@@ -288,7 +296,7 @@ const EmployeeFormPage = () => {
           <div className="border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
             <div className="bg-gradient-to-r from-orange-50 to-amber-50 px-6 py-4 border-b border-gray-200">
               <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                <span className="text-2xl">💼</span> Employment & Job Details
+                <WorkIcon style={{ color: '#f97316' }} /> Employment & Job Details
               </h2>
             </div>
             <div className="p-6 space-y-6">
@@ -307,8 +315,8 @@ const EmployeeFormPage = () => {
                   <div className="flex justify-between items-center border-b pb-2">
                     <h3 className="text-lg font-bold text-gray-700">Company {index + 1}</h3>
                     {companies.length > 1 && (
-                      <button type="button" onClick={() => removeCompany(company.id)} className="text-red-600 hover:text-red-800 font-semibold">
-                        ✕ Remove
+                      <button type="button" onClick={() => removeCompany(company.id)} className="flex items-center gap-1 text-sm border border-red-400 text-red-500 px-3 py-1 rounded-lg">
+                        <CloseIcon style={{ fontSize: 16 }} /> Remove
                       </button>
                     )}
                   </div>
@@ -334,8 +342,8 @@ const EmployeeFormPage = () => {
               ))}
 
               <div className="flex justify-center">
-                <button type="button" onClick={addCompany} className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center gap-2">
-                  <span className="text-xl">+</span> Add Another Company
+                <button type="button" onClick={addCompany} className="flex items-center gap-2 border border-orange-500 text-orange-500 font-semibold py-2.5 px-6 rounded-lg transition-all">
+                  <AddIcon /> Add Another Company
                 </button>
               </div>
               </>
@@ -347,7 +355,7 @@ const EmployeeFormPage = () => {
           <div className="border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
             <div className="bg-gradient-to-r from-teal-50 to-cyan-50 px-6 py-4 border-b border-gray-200">
               <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                <span className="text-2xl">🏦</span> Bank Details
+                <AccountBalanceIcon style={{ color: '#0891b2' }} /> Bank Details
               </h2>
             </div>
             <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -373,7 +381,7 @@ const EmployeeFormPage = () => {
           </div>
 
           <div className="flex justify-center pt-8 pb-4">
-            <button type="submit" disabled={loading} className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-4 px-12 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center gap-3">
+            <button type="submit" disabled={loading} className="flex items-center gap-2 border border-orange-500 text-orange-500 font-bold py-3 px-12 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed">
               {loading ? (
                 <>
                   <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
@@ -384,7 +392,7 @@ const EmployeeFormPage = () => {
                 </>
               ) : (
                 <>
-                  <span className="text-xl">✔️</span>
+                  <CheckCircleOutlineIcon />
                   <span>Submit Form</span>
                 </>
               )}

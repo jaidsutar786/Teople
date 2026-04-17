@@ -2250,7 +2250,10 @@ const SalaryAttendance = ({ employeeId, employeeName, employeeMonthlySalary, rou
                         <Button
                           onClick={() => handleHalfDayToggle(index)}
                           size="small"
-                          danger={day.status === 'half_day'}
+                          style={{
+                            borderColor: day.status === 'half_day' ? '#ef4444' : '#000',
+                            color: day.status === 'half_day' ? '#ef4444' : '#000',
+                          }}
                         >
                           {day.status === 'half_day' ? '½ Undo' : 'Half Day'}
                         </Button>

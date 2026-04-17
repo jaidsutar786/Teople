@@ -365,11 +365,10 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="flex items-center justify-center h-64">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading Dashboard...</p>
-          <p className="mt-2 text-sm text-gray-500">Fetching salary and attendance data</p>
         </div>
       </div>
     );
@@ -378,24 +377,19 @@ const AdminDashboard = () => {
   // Show error state if critical data is missing
   if (!summaryData && !loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="flex items-center justify-center h-64">
         <div className="text-center">
           <div className="text-red-500 text-6xl mb-4">⚠️</div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Dashboard Error</h2>
-          <p className="text-gray-600 mb-4">Unable to load dashboard data. Please check your connection.</p>
-          <button
-            onClick={loadDashboardData}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-          >
-            Retry
-          </button>
+          <p className="text-gray-600 mb-4">Unable to load dashboard data.</p>
+          <button onClick={loadDashboardData} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Retry</button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="p-6">
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center justify-between">
