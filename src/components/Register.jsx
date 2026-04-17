@@ -1,154 +1,8 @@
-// import React, { useState } from "react";
-// import { useNavigate, Link } from "react-router-dom";
-// import { registerUser } from "../api";
-
-// const Register = () => {
-//   const [username, setUsername] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [error, setError] = useState("");
-//   const [success, setSuccess] = useState("");
-//   const [darkMode, setDarkMode] = useState(false);
-
-//   const navigate = useNavigate();
-
-//   const handleRegister = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const data = await registerUser(username, email, password);
-//       setSuccess(data.message);
-//       setError("");
-//       setTimeout(() => navigate("/"), 1500);
-//     } catch (err) {
-//       setError(err.error || "Something went wrong");
-//       setSuccess("");
-//     }
-//   };
-
-//   return (
-//     <section
-//       className={`flex items-center justify-center min-h-screen transition-colors duration-500 ${
-//         darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"
-//       }`}
-//     >
-//       {/* Theme Toggle */}
-//       <div className="absolute top-4 right-4">
-//         <label className="inline-flex items-center cursor-pointer">
-//           <input
-//             type="checkbox"
-//             checked={darkMode}
-//             onChange={() => setDarkMode(!darkMode)}
-//             className="sr-only peer"
-//           />
-//           <div className="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-blue-500 relative">
-//             <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-all peer-checked:translate-x-5"></div>
-//           </div>
-//         </label>
-//       </div>
-
-//       <div
-//         className={`w-full max-w-md rounded-2xl shadow-lg p-8 ${
-//           darkMode ? "bg-gray-800" : "bg-white"
-//         }`}
-//       >
-//         {/* Logo + Title */}
-//         <div className="flex flex-col items-center mb-6">
-//           <img
-//             src="/src/assets/Teople1.png"
-//             alt="Company Logo"
-//             className="mb-3 w-12 h-12 object-contain"
-//           />
-
-//           {/* ✅ CHANGED: "Sign in" to "Create Account" */}
-//           <h2 className="text-2xl font-bold">Create Account</h2>
-
-//           {/* ✅ CHANGED: Welcome message for registration */}
-//           <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
-//             Join us today! Please enter your details to create an account.
-//           </p>
-//         </div>
-
-//         {/* Alerts */}
-//         {error && (
-//           <p className="mb-4 text-sm text-red-500 text-center font-medium">
-//             {error}
-//           </p>
-//         )}
-//         {success && (
-//           <p className="mb-4 text-sm text-green-500 text-center font-medium">
-//             {success}
-//           </p>
-//         )}
-
-//         {/* Form */}
-//         <form className="space-y-5" onSubmit={handleRegister}>
-//           <div>
-//             <label className="block text-sm mb-1">Username</label>
-//             <input
-//               type="text"
-//               value={username}
-//               onChange={(e) => setUsername(e.target.value)}
-//               placeholder="Enter username"
-//               required
-//               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition"
-//             />
-//           </div>
-
-//           <div>
-//             <label className="block text-sm mb-1">Email</label>
-//             <input
-//               type="email"
-//               value={email}
-//               onChange={(e) => setEmail(e.target.value)}
-//               placeholder="Enter email"
-//               required
-//               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition"
-//             />
-//           </div>
-
-//           <div>
-//             <label className="block text-sm mb-1">Password</label>
-//             <input
-//               type="password"
-//               value={password}
-//               onChange={(e) => setPassword(e.target.value)}
-//               placeholder="Enter password"
-//               required
-//               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition"
-//             />
-//           </div>
-
-//           <button
-//             type="submit"
-//             className="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition"
-//           >
-//             {/* ✅ CHANGED: Button text */}
-//             Register
-//           </button>
-//         </form>
-
-//         {/* Footer */}
-//         <p className="mt-6 text-sm text-center">
-//           {/* ✅ CHANGED: Text for redirecting to login */}
-//           Already have an account?{" "}
-//           <Link to="/" className="text-blue-500 hover:underline">
-//             Sign in here
-//           </Link>
-//         </p>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Register;
-
-
-
-
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { sendOTP, verifyOTPAndRegister, resendOTP } from "../api";
 import toast, { Toaster } from 'react-hot-toast';
+import logoImg from '../assets/Teople1.png';
 
 const Register = () => {
   const [step, setStep] = useState(1); // 1: Email, 2: OTP Verification
@@ -288,7 +142,7 @@ const Register = () => {
         {/* Logo + Title */}
         <div className="flex flex-col items-center mb-6">
           <img
-            src="/src/assets/Teople1.png"
+            src={logoImg}
             alt="Company Logo"
             className="w-12 h-12 rounded-full object-cover mb-3"
           />
