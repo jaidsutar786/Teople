@@ -266,7 +266,7 @@ const Sidebar = ({ sidebarOpen, onProfileClick }) => {
         <button
           onClick={item.onClick}
           className={`group flex items-center w-full px-3 py-2 rounded-lg text-sm transition-all duration-150
-            ${isActive ? "bg-white text-orange-500 shadow-sm" : "text-gray-800 hover:bg-white/70 hover:text-gray-900"}`}
+            ${isActive ? "text-orange-500 font-medium" : "text-gray-800 hover:bg-white/70 hover:text-gray-900"}`}
           title={!sidebarOpen ? item.label : ""}
         >
           {sidebarOpen ? (
