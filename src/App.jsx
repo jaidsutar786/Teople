@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -63,7 +63,7 @@ function App() {
         >
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin-home" element={<AdminHome />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Navigate to="/admin-home" replace />} />
           <Route path="/requests/leave" element={<Dashboard activeTab="leaves" />} />
           <Route path="/requests/wfh" element={<Dashboard activeTab="wfh" />} />
           <Route path="/requests/compoff" element={<Dashboard activeTab="compoff" />} />

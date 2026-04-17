@@ -163,7 +163,7 @@ const Login = () => {
 
     if (isLoggedIn === "true" && role) {
       if (role === "admin") {
-        navigate("/dashboard", { replace: true });
+        navigate("/admin-home", { replace: true });
       } else if (role === "employee") {
         navigate("/employee-home", { replace: true });
       }
@@ -194,7 +194,7 @@ const Login = () => {
       // Redirect based on role
       setTimeout(() => {
         if (data.user.role === "admin") {
-          navigate("/dashboard", { replace: true });
+          navigate("/admin-home", { replace: true });
         } else if (data.user.role === "employee") {
           navigate("/employee-home", { replace: true });
         }

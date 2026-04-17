@@ -33,7 +33,6 @@ const Sidebar = ({ sidebarOpen, onProfileClick }) => {
   const role = localStorage.getItem("role")
   const { pendingRequests, employeeNotifications, liveWorkingCount } = useNotifications()
 
-  const dashboardPath = role === "admin" ? "/dashboard" : "/employee-home"
   const homePath = role === "admin" ? "/admin-home" : "/employee-home"
 
   const [openDropdowns, setOpenDropdowns] = useState({})
@@ -90,10 +89,10 @@ const Sidebar = ({ sidebarOpen, onProfileClick }) => {
           onClick: () => navigate("/leave-management"),
         },
         {
-          key: "/dashboard",
+          key: "/requests",
           icon: <AssignmentIcon fontSize="small" />,
           label: "Requests",
-          onClick: () => toggleDropdown("/dashboard"),
+          onClick: () => toggleDropdown("/requests"),
           badge: pendingRequests.total,
           children: [
             {
@@ -256,7 +255,9 @@ const Sidebar = ({ sidebarOpen, onProfileClick }) => {
   const sections = role === "admin" ? adminSections : employeeSections
 
   const renderItem = (item) => {
-    const isActive = location.pathname === item.key
+    const isActive = item.children
+      ? item.children.some(child => location.pathname === child.key)
+      : location.pathname === item.key
     const hasChildren = item.children && item.children.length > 0
     const isOpen = openDropdowns[item.key]
 

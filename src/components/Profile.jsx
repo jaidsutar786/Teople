@@ -267,11 +267,10 @@ const Profile = ({ open, onClose }) => {
 
   const DocLink = ({ label, url }) => {
     if (!url) return null
-    const googleViewUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(url)}&embedded=true`
     return (
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "9px 0", borderBottom: "1px solid #f5f5f5" }}>
         <Text style={{ fontSize: 13 }}>{label}</Text>
-        <a href={googleViewUrl} target="_blank" rel="noopener noreferrer">
+        <a href={url} target="_blank" rel="noopener noreferrer">
           <Button size="small" icon={<IdcardOutlined />} style={{ borderRadius: 6, fontSize: 11, borderColor: "#fa8c16", color: "#fa8c16" }}>View</Button>
         </a>
       </div>
