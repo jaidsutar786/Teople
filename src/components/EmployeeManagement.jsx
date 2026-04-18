@@ -24,7 +24,7 @@ const EmployeeManagement = () => {
       const response = await api.get('/employee-form/all/');
       console.log('Employees data:', response.data);
       if (response.data && Array.isArray(response.data)) {
-        setEmployees(response.data);
+        setEmployees(response.data.sort((a, b) => a.employee.id - b.employee.id));
       }
     } catch (error) {
       console.error('Error fetching employees:', error);

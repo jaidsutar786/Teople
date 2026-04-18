@@ -53,7 +53,9 @@ const EmployeeTable = () => {
   const fetchEmployees = async () => {
     try {
       const employees = await getEmployees()
-      const formattedData = employees.map((emp) => ({
+      const formattedData = employees
+        .sort((a, b) => a.id - b.id)
+        .map((emp) => ({
         id: emp.id,
         first_name: emp.first_name,
         last_name: emp.last_name,
